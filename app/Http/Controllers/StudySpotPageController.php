@@ -30,8 +30,21 @@ class StudySpotPageController extends Controller
 }
    public function show(\App\Models\StudySpot $studySpot)
 {
-    $spot = $studySpot->load(['reviews.user']); // important
-    return view('study-spots.show', compact('spot'));
+    $studySpot = \App\Models\StudySpot::with(['reviews.user'])
+        ->withCount('reviews')
+        ->withAvg('reviews', 'rating')
+        ->findOrFail($studySpot->id);
+
+    $reviews = $studySpot->reviews()
+        ->with('user')
+        ->latest()
+        ->get();
+
+    return view('study-spots.show', [
+        'studySpot' => $studySpot,
+        'spot' => $studySpot,
+        'reviews' => $reviews,
+    ]);
 }
 }
 

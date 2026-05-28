@@ -64,7 +64,7 @@
                         <p>No reviews yet.</p>
                     @else
                         <div class="space-y-6">
-                            @foreach ($spot->reviews as $review)
+                            @foreach($reviews as $review)
                                 <div class="border rounded p-4">
                                     @php
                                         $reviewRating = (float) $review->rating;
