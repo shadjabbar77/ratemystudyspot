@@ -40,8 +40,8 @@
                     </h1>
 
                     @php
-                        $reviewCount = $spot->reviews->count();
-                        $avgRating = (float) ($spot->reviews->avg('rating') ?? 0);
+                        $reviewCount = $reviews->count();
+$avgRating = (float) ($reviews->avg('rating') ?? 0);
 
                         if ($reviewCount === 0) {
                             $starColor = '#000000'; // black
@@ -60,7 +60,7 @@
                         ({{ $reviewCount }} reviews)
                     </p>
 
-                    @if ($spot->reviews->count() === 0)
+                    @if ($reviews->count() === 0)
                         <p>No reviews yet.</p>
                     @else
                         <div class="space-y-6">
