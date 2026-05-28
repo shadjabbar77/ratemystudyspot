@@ -1,4 +1,7 @@
 <x-guest-layout>
+<div style="text-align:center; margin-bottom:24px; font-size:28px; font-weight:900; color:#000;">
+    ★ Rate My Study Spot ★
+</div>
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
